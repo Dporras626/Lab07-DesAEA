@@ -7,27 +7,22 @@ using Entity;
 using Data;
 namespace Business
 {
-    public class BProdcut
+    public class BProduct
     {
-        public List<Product> GetByNmae(string Name)
+        public Product BuscarPorNombre(string name)
         {
-            List<Product> result = new List<Product>();
+            List<Product> products = new List<Product>();
+            products = DProduct.ListarProducts();
 
-            DProduct data = new DProduct();
-
-            //Obtengo todos los productos
-            var products = data.Get();
-
-            //Filtro por nombre
-            foreach (var product in products)
+            foreach (var pro in products)
             {
-                if (product.Name == Name)
+                if (pro.Name.Equals(name))
                 {
-                    result.Add(product);
+                    return pro;
                 }
             }
 
-            return result;
+            return null;
         }
     }
 }

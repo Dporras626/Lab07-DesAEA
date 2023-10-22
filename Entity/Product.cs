@@ -13,5 +13,5 @@ namespace Entity
         public decimal Price { get; set; }
         public int Stock { get; set; }
         public bool Active { get; set; }
-    }
+    }   
 }
