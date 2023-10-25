@@ -57,5 +57,53 @@ namespace Data
 
         }
 
+        public static void InsertarProducts(Product product)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand("InsertarProducts", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@name", product.Name);
+                    command.Parameters.AddWithValue("@price", product.Price);
+                    command.Parameters.AddWithValue("@stock", product.Stock);
+                    command.Parameters.AddWithValue("@active", product.Active);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void ActualizarProducts(Product product)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand("ActualizarProducts", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Product_id", product.ProductId);
+                    command.Parameters.AddWithValue("@name", product.Name);
+                    command.Parameters.AddWithValue("@price", product.Price);
+                    command.Parameters.AddWithValue("@stock", product.Stock);
+                    command.Parameters.AddWithValue("@active", product.Active);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void EliminarProducts(int productId)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand("EliminarProducts", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Product_id", productId);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

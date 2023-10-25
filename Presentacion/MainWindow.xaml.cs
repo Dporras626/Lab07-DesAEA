@@ -29,4 +29,24 @@ namespace Presentacion
             dgSimple.ItemsSource = products;
         }
     }
+
+    private void Crear_Click(object sender, RoutedEventArgs e)
+    {
+        // Abre un formulario o ventana emergente para ingresar los detalles del nuevo producto
+        CrearProductoForm crearForm = new CrearProductoForm();
+
+        if (crearForm.ShowDialog() == true)
+        {
+            // Obtiene los detalles del producto ingresados en el formulario
+            Product nuevoProducto = crearForm.ProductoCreado;
+
+            // Llama a la función de la capa de negocios para crear el producto
+            BProduct bProduct = new BProduct();
+            bProduct.CrearProduct(nuevoProducto);
+
+            // Actualiza la lista de productos llamando a CargarProductos
+            CargarProductos();
+        }
+    }
+
 }

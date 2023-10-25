@@ -8,6 +8,9 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid Margin="10">
         <DataGrid Name="dgSimple"></DataGrid>
+        <Button Content="Crear" Click="Crear_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+        <Button Content="Actualizar" Click="Actualizar_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="90,10,0,0"/>
+        <Button Content="Eliminar" Click="Eliminar_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="180,10,0,0"/>
     </Grid>
 
 </Window>
