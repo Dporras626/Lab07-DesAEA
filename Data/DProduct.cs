@@ -21,7 +21,7 @@ namespace Data
             {
                 // Abrir la conexión
                 connection.Open();
-                string query = "SELECT * FROM ListarProducts()";
+                string query = "ListarProductos";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {

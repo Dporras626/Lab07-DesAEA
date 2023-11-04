@@ -1,6 +1,5 @@
 ﻿
 using Business;
-using Data;
 using Entity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -43,8 +42,26 @@ namespace WebApplication1.Controllers
         // POST: ProductController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        
+        public ActionResult Create(ProductModel model)
+        {
+            try
+            {
+                BProduct bProduct = new BProduct();
+                Product product = new Product
+                {
+                    Name = model.Name,
+                    Price = model.Price,
+                };
+
+                bProduct.CrearProduct(product);
+                
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
         // GET: ProductController/Edit/5
         public ActionResult Edit(int id)
